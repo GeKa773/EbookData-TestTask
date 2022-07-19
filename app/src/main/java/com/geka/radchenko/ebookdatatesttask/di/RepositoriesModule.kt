@@ -2,6 +2,7 @@ package com.geka.radchenko.ebookdatatesttask.di
 
 import android.app.Application
 import androidx.room.Room
+import com.geka.radchenko.ebookdatatesttask.api.Api
 import com.geka.radchenko.ebookdatatesttask.db.DATABASE_NAME
 import com.geka.radchenko.ebookdatatesttask.db.DataBase
 import com.geka.radchenko.ebookdatatesttask.repository.Repository
@@ -9,6 +10,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import retrofit2.Retrofit
 import javax.inject.Singleton
 
 @Module
@@ -18,11 +20,10 @@ class RepositoriesModule {
     @Provides
     @Singleton
     fun provideRepository(
-
-        dataBase: DataBase,
-
-    ): Repository {
-        return Repository(dataBase)
+        api: Api,
+//        dataBase: DataBase,
+        ): Repository {
+        return Repository(api, )
     }
 
     @Provides
