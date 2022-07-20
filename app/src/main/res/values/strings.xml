@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">EbookData TestTask</string>
+    <string name="bookly">BOOKLY</string>
+    <string name="best_seller">Best Seller</string>
 </resources>

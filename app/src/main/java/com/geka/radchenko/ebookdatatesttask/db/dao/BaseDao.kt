@@ -23,4 +23,12 @@ abstract class BaseDao<T> {
             update(t)
         }
     }
+
+    open suspend fun upsertAll(list: List<T>) {
+        list.forEach {
+            if (insert(it) == -1L) {
+                update(it)
+            }
+        }
+    }
 }

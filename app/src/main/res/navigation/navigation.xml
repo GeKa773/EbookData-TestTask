@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
     app:startDestination="@id/booksListFragment">
 
     <fragment
         android:id="@+id/booksListFragment"
         android:name="com.geka.radchenko.ebookdatatesttask.ui.BooksListFragment"
-        android:label="BooksListFragment" >
+        android:label="BooksListFragment"
+        tools:layout="@layout/books_list_fragment">
         <action
             android:id="@+id/action_booksListFragment_to_bookItemFragment"
             app:destination="@id/bookItemFragment" />
@@ -15,5 +17,6 @@
     <fragment
         android:id="@+id/bookItemFragment"
         android:name="com.geka.radchenko.ebookdatatesttask.ui.BookItemFragment"
-        android:label="BookItemFragment" />
+        android:label="BookItemFragment"
+        tools:layout="@layout/book_item_fragment" />
 </navigation>

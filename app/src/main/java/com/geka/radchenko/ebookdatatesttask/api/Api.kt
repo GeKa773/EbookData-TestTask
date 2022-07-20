@@ -10,6 +10,8 @@ interface Api {
 
     @GET("carousel")
     fun getCarouselAsync(): Deferred<List<CarouselData>>
+    @GET("best")
     fun getBestAsync(): Deferred<List<BestData>>
+    @GET("similar")
     fun getSimilarAsync(): Deferred<List<SimilarData>>
 }

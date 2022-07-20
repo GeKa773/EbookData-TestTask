@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.EbookDataTestTask" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.EbookDataTestTask" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -12,5 +12,26 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Text.Title" parent="">
+        <item name="android:textSize">18sp</item>
+        <item name="fontFamily">@font/dejavu_sans</item>
+        <item name="android:fontFamily">@font/dejavu_sans</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Text.ItemTitle" parent="">
+        <item name="android:textSize">20sp</item>
+        <item name="fontFamily">@font/dejavu_sans</item>
+        <item name="android:fontFamily">@font/dejavu_sans</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Text.ItemText" parent="">
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/dejavu_sans</item>
+        <item name="android:fontFamily">@font/dejavu_sans</item>
+        <item name="android:textColor">@color/white_30</item>
     </style>
 </resources>
