@@ -81,6 +81,9 @@ class BooksListFragment :
     }
 
     private fun observePagerList() {
+        viewModel.dbPagerData.observe(viewLifecycleOwner) {
+            viewModel.setPagerData(it)
+        }
         viewModel.pagerList.observe(viewLifecycleOwner) {
             pagerAdapter.submitList(it)
         }

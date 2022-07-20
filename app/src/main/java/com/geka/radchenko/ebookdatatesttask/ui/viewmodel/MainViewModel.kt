@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.geka.radchenko.ebookdatatesttask.api.pojo.CarouselData
 import com.geka.radchenko.ebookdatatesttask.db.BestSellerTable
+import com.geka.radchenko.ebookdatatesttask.db.PagerDataTable
 import com.geka.radchenko.ebookdatatesttask.repository.Repository
 import com.geka.radchenko.ebookdatatesttask.ui.adapter.BestSellerAdapter
 import com.geka.radchenko.ebookdatatesttask.ui.adapter.PagerAdapter
@@ -34,16 +35,20 @@ class MainViewModel
     val bestSellerList: LiveData<List<BestSellerAdapter.BestSellerData>> = _bestSellerList
 
     val dbBestSeller = repository.getBestSellersLive()
+    val dbPagerData = repository.getPagerDataLive()
+    val dbSimilar = repository.getSimilarLive()
 
     private fun getCarouselRetrofit() {
         viewModelScope.launch(Dispatchers.Main) {
             val result = repository.getCarouselAsync().await()
-            val array = arrayListOf<PagerAdapter.PagerData>().apply {
+            val list = arrayListOf<PagerDataTable>().apply {
                 result.forEach {
-                    add(PagerAdapter.PagerData(it.id, it.image))
+                    add(it.toDb())
                 }
             }
-            _pagerList.value = array
+            withContext(Dispatchers.Main) {
+                repository.addPagerData(list)
+            }
         }
     }
 
@@ -68,5 +73,14 @@ class MainViewModel
             }
         }
         _bestSellerList.value = array
+    }
+
+    fun setPagerData(list: List<PagerDataTable>) {
+        val array = arrayListOf<PagerAdapter.PagerData>().apply {
+            list.forEach {
+                add(it.toShowData())
+            }
+        }
+        _pagerList.value = array
     }
 }
