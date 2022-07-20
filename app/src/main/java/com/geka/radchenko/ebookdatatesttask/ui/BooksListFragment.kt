@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.geka.radchenko.ebookdatatesttask.R
@@ -40,7 +41,8 @@ class BooksListFragment :
     private fun initPagerAdapter() {
         pagerAdapter = PagerAdapter()
         val nextItemVisiblePx = resources.getDimension(R.dimen.viewpager_next_item_visible)
-        val currentItemHorizontalMarginPx = resources.getDimension(R.dimen.viewpager_current_item_horizontal_margin)
+        val currentItemHorizontalMarginPx =
+            resources.getDimension(R.dimen.viewpager_current_item_horizontal_margin)
         val pageTranslationX = nextItemVisiblePx + currentItemHorizontalMarginPx
         val pageTransformer = ViewPager2.PageTransformer { page: View, position: Float ->
             page.translationX = -pageTranslationX * position
@@ -58,7 +60,10 @@ class BooksListFragment :
     }
 
     private fun initRvBestSeller() {
-        bestSellerAdapter = BestSellerAdapter { }
+        bestSellerAdapter = BestSellerAdapter {
+            binding.rvBestSeller.findNavController()
+                .navigate(BooksListFragmentDirections.actionBooksListFragmentToBookItemFragment(it))
+        }
         binding.rvBestSeller.run {
             adapter = bestSellerAdapter
             layoutManager = LinearLayoutManager(requireContext())

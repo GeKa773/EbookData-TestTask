@@ -12,11 +12,19 @@
         tools:layout="@layout/books_list_fragment">
         <action
             android:id="@+id/action_booksListFragment_to_bookItemFragment"
-            app:destination="@id/bookItemFragment" />
+            app:destination="@id/bookItemFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/bookItemFragment"
         android:name="com.geka.radchenko.ebookdatatesttask.ui.BookItemFragment"
         android:label="BookItemFragment"
-        tools:layout="@layout/book_item_fragment" />
+        tools:layout="@layout/book_item_fragment">
+        <argument
+            android:name="bestSeller"
+            app:argType="com.geka.radchenko.ebookdatatesttask.ui.adapter.BestSellerAdapter$BestSellerData" />
+    </fragment>
 </navigation>
