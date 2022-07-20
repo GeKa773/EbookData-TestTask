@@ -8,6 +8,7 @@ import com.geka.radchenko.ebookdatatesttask.api.pojo.CarouselData
 import com.geka.radchenko.ebookdatatesttask.db.BestSellerTable
 import com.geka.radchenko.ebookdatatesttask.repository.Repository
 import com.geka.radchenko.ebookdatatesttask.ui.adapter.BestSellerAdapter
+import com.geka.radchenko.ebookdatatesttask.ui.adapter.PagerAdapter
 import com.geka.radchenko.ebookdatatesttask.util.toDb
 import com.geka.radchenko.ebookdatatesttask.util.toShowData
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -21,8 +22,13 @@ class MainViewModel
 @Inject constructor(private val repository: Repository) : ViewModel() {
     private val TAG by lazy { javaClass.simpleName }
 
-    private val _carouselList = MutableLiveData<List<CarouselData>>()
-    val carouselList: LiveData<List<CarouselData>> = _carouselList
+    init {
+        getBestSellersRetrofit()
+        getCarouselRetrofit()
+    }
+
+    private val _pagerList = MutableLiveData<List<PagerAdapter.PagerData>>()
+    val pagerList: LiveData<List<PagerAdapter.PagerData>> = _pagerList
 
     private val _bestSellerList = MutableLiveData<List<BestSellerAdapter.BestSellerData>>()
     val bestSellerList: LiveData<List<BestSellerAdapter.BestSellerData>> = _bestSellerList
@@ -32,11 +38,16 @@ class MainViewModel
     private fun getCarouselRetrofit() {
         viewModelScope.launch(Dispatchers.Main) {
             val result = repository.getCarouselAsync().await()
-            _carouselList.value = result
+            val array = arrayListOf<PagerAdapter.PagerData>().apply {
+                result.forEach {
+                    add(PagerAdapter.PagerData(it.id, it.image))
+                }
+            }
+            _pagerList.value = array
         }
     }
 
-     fun getBestSellersRetrofit() {
+    private fun getBestSellersRetrofit() {
         viewModelScope.launch(Dispatchers.IO) {
             val result = repository.getBestAsync().await()
             val list = arrayListOf<BestSellerTable>().apply {

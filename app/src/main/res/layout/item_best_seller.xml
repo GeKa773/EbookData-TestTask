@@ -32,7 +32,7 @@
                 android:id="@+id/iv_picture"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scaleType="fitXY"
+                android:load="@{data.image}"
                 tools:src="@tools:sample/avatars" />
         </androidx.cardview.widget.CardView>
 
@@ -68,6 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/default_margin"
+            android:setPrice="@{data.price}"
             app:layout_constraintStart_toEndOf="@+id/cardView"
             app:layout_constraintTop_toBottomOf="@+id/tv_author"
             tools:text="19.99 €" />
@@ -79,6 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/default_margin"
             android:layout_marginEnd="4dp"
+            android:text="@{String.valueOf(data.rate)}"
             android:textSize="16sp"
             app:layout_constraintBaseline_toBaselineOf="@id/tv_price"
             app:layout_constraintEnd_toStartOf="@+id/tv_rate_count"
@@ -93,6 +95,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/default_margin"
             android:layout_marginEnd="30dp"
+            android:setRateCount="@{data.rateCount}"
             app:layout_constraintBaseline_toBaselineOf="@id/tv_price"
             app:layout_constraintEnd_toEndOf="parent"
             tools:text="(2390)" />

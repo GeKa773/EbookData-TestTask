@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.Keep
 import androidx.recyclerview.widget.DiffUtil
+import com.bumptech.glide.Glide
+import com.geka.radchenko.ebookdatatesttask.R
 import com.geka.radchenko.ebookdatatesttask.base.BaseRecyclerAdapter
 import com.geka.radchenko.ebookdatatesttask.base.BaseViewHolder
 import com.geka.radchenko.ebookdatatesttask.databinding.ItemBestSellerBinding
@@ -33,7 +35,6 @@ class BestSellerAdapter(private val click: (item: BestSellerData) -> Unit) :
 
         override fun bind(position: Int, item: BestSellerData) {
             binding.data = item
-            //toDo image load
         }
 
     }
