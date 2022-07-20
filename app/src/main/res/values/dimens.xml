@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="default_margin">20dp</dimen>
+    <dimen name="default_padding">20dp</dimen>
+    <dimen name="button_price_radius">8dp</dimen>
 
     <dimen name="viewpager_next_item_visible">100dp</dimen>
     <dimen name="viewpager_current_item_horizontal_margin">130dp</dimen>
+    <dimen name="card_radius">10dp</dimen>
 </resources>

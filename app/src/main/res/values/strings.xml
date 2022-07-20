@@ -2,4 +2,6 @@
     <string name="app_name">EbookData TestTask</string>
     <string name="bookly">BOOKLY</string>
     <string name="best_seller">Best Seller</string>
+    <string name="free_preview">Free preview</string>
+    <string name="you_can_also_like">You can also like</string>
 </resources>

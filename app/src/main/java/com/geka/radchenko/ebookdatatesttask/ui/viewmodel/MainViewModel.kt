@@ -36,7 +36,7 @@ class MainViewModel
 
     val dbBestSeller = repository.getBestSellersLive()
     val dbPagerData = repository.getPagerDataLive()
-    val dbSimilar = repository.getSimilarLive()
+
 
     private fun getCarouselRetrofit() {
         viewModelScope.launch(Dispatchers.Main) {

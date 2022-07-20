@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.geka.radchenko.ebookdatatesttask.ui.adapter.SimpleAdapter.SimpleData" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="70dp"
+        android:layout_height="110dp"
+        android:layout_marginEnd="@dimen/default_margin"
+        app:cardCornerRadius="@dimen/card_radius">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:load="@{data.image}"
+            android:scaleType="fitXY"
+            tools:src="@tools:sample/avatars" />
+
+    </androidx.cardview.widget.CardView>
+</layout>

@@ -21,7 +21,11 @@ fun setRateCount(view: TextView, rateCount: Int) {
 }
 
 @BindingAdapter("android:load")
-fun ImageView.load(url: String) {
+fun ImageView.load(url: String?) {
+    if (url == null) {
+        this.setImageResource(R.drawable.load_background)
+        return
+    }
     Glide
         .with(this.context)
         .load(url)
