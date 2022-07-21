@@ -18,16 +18,11 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-    const val BASE_URL = "https://my-json-server.typicode.com/stellardiver/ebookdata/"
+    private const val BASE_URL = "https://my-json-server.typicode.com/stellardiver/ebookdata/"
 
     @Provides
     @Singleton
     fun provideRetrofit(): Retrofit {
-        val client = OkHttpClient.Builder()
-            .connectTimeout(30, TimeUnit.SECONDS)
-            .writeTimeout(30, TimeUnit.SECONDS)
-            .readTimeout(30, TimeUnit.SECONDS)
-            .build()
         val moshi = Moshi
             .Builder()
             .add(KotlinJsonAdapterFactory())
