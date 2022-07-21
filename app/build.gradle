@@ -18,6 +18,15 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    signingConfigs {
+        release {
+            keyAlias "EbookData"
+            keyPassword "11223344a"
+            storeFile file('keys.jks')
+            storePassword "11223344a"
+        }
+
+    }
 
     buildTypes {
         release {
